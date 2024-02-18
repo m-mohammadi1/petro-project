@@ -19,7 +19,7 @@ abstract class BaseMemoryRepository implements BaseRepositoryInterface
     {
         $idToInsert = count($this->storage) + 1;
 
-        $model = (new $this->getModel());
+        $model = resolve($this->getModel());
         $model->id = $idToInsert;
         foreach ($data as $field => $value) {
             $model->{$field} = $value;
@@ -75,12 +75,35 @@ abstract class BaseMemoryRepository implements BaseRepositoryInterface
 
     public function all(array $conditions): Collection
     {
-        return collect($this->storage);
+        $result = collect($this->storage);
+
+        foreach ($conditions as $key => $value) {
+            $result = $result->where($key, $value);
+        }
+
+        return $result;
     }
 
     public function paginate(array $conditions, int $perPage = 25): LengthAwarePaginator
     {
-        return LengthAwarePaginator::make(collect($this->storage)->take($perPage)->toArray());
+        $result = collect($this->storage);
+
+        foreach ($conditions as $key => $value) {
+            $result = $result->where($key, $value);
+        }
+
+        return LengthAwarePaginator::make($result->take($perPage)->toArray());
+    }
+
+    public function find(int $id): ?Model
+    {
+        $model = collect($this->storage)->where('id', $id)->first();
+
+        if (!$model) {
+            throw new NotFoundHttpException("model not found");
+        }
+
+        return $model;
     }
 
     public function findOrFail(int $id): Model

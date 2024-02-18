@@ -24,5 +24,7 @@ interface BaseRepositoryInterface
 
     public function paginate(array $conditions, int $perPage = 25): LengthAwarePaginator;
 
+    public function find(int $id): ?Model;
+
     public function findOrFail(int $id): Model;
 }
