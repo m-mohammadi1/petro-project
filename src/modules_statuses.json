@@ -1,5 +1,6 @@
 {
     "Auth": true,
     "Truck": true,
-    "Order": true
+    "Order": true,
+    "Shared": true
 }
