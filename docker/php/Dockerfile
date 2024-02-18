@@ -23,14 +23,20 @@ RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Create a new non-root user
+RUN groupadd -g 1000 appgroup && useradd -u 1000 -g 1000 -m appuser
+
 # Copy the rest of the application
-COPY /src .
+COPY --chown=appuser:appgroup src .
 
 # Install dependencies
 RUN composer install --no-scripts --no-autoloader
 
 # Generate autoload files
 RUN composer dump-autoload --optimize
+
+# Switch to the created user
+USER appuser
 
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000

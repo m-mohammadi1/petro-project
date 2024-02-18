@@ -13,11 +13,12 @@
 - add auth, truck, order module folders
 
 #### 3. add Auth module
+- use laravel-sanctum for auth
 - a command to create superuser of system
 - superuser can create company with an admin user
 - admin user can create multiple users with defined roles
 - each user can have access to different modules by the role
-- users can login and see the dashboard page
+- users can log in and see the dashboard page
 
 #### 4. add truck management module
 - admin can create trucks for company
