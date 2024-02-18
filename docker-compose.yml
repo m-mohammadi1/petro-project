@@ -3,15 +3,21 @@ version: '3'
 services:
 
   app:
+    container_name: app
     build:
       context: .
       dockerfile: docker/php/Dockerfile
     restart: unless-stopped
     volumes:
       - ./src:/var/www/html
+    depends_on:
+      - database
+    networks:
+      - local-net
 
-  db:
-    image: postgres:14.5
+  database:
+    container_name: database
+    image: postgres:latest
     restart: unless-stopped
     environment:
       POSTGRES_DB: ${DB_DATABASE:-test_db}
@@ -19,6 +25,8 @@ services:
       POSTGRES_PASSWORD: ${DB_PASSWORD:-test_pass}
     volumes:
       - postgres-data:/var/lib/postgresql/data
+    networks:
+      - local-net
 
   webserver:
     image: nginx:latest
@@ -31,6 +39,12 @@ services:
       - .:/var/www/html
     depends_on:
       - app
+    networks:
+      - local-net
 
 volumes:
   postgres-data:
+
+networks:
+  local-net:
+    driver: bridge
