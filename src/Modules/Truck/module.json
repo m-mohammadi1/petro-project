@@ -1,0 +1,11 @@
+{
+    "name": "Truck",
+    "alias": "truck",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Truck\\App\\Providers\\TruckServiceProvider"
+    ],
+    "files": []
+}
