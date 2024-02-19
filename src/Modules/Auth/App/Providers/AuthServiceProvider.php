@@ -4,6 +4,17 @@ namespace Modules\Auth\App\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\Auth\App\Console\CreateRolesAndSuperUserCommand;
+use Modules\Auth\Repository\Role\RoleMemoryRepository;
+use Modules\Auth\Repository\Role\RolePostgresRepository;
+use Modules\Auth\Repository\Role\RoleRepositoryInterface;
+use Modules\Auth\Repository\User\UserMemoryRepository;
+use Modules\Auth\Repository\User\UserPostgresRepository;
+use Modules\Auth\Repository\User\UserRepositoryInterface;
+use Modules\Auth\Services\RoleManager\RoleManagerService;
+use Modules\Auth\Services\RoleManager\RoleManagerServiceInterface;
+use Modules\Auth\Services\UserRoleManager\UserRoleManagerService;
+use Modules\Auth\Services\UserRoleManager\UserRoleManagerServiceInterface;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -30,6 +41,12 @@ class AuthServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->register(RouteServiceProvider::class);
+
+        // bind repos and service
+        $this->app->bind(UserRepositoryInterface::class, UserPostgresRepository::class);
+        $this->app->bind(RoleRepositoryInterface::class, RolePostgresRepository::class);
+        $this->app->bind(RoleManagerServiceInterface::class, RoleManagerService::class);
+        $this->app->bind(UserRoleManagerServiceInterface::class, UserRoleManagerService::class);
     }
 
     /**
@@ -37,7 +54,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected function registerCommands(): void
     {
-        // $this->commands([]);
+         $this->commands([
+             CreateRolesAndSuperUserCommand::class,
+         ]);
     }
 
     /**

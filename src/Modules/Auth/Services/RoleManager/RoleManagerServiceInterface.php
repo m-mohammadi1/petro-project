@@ -8,6 +8,8 @@ interface RoleManagerServiceInterface
 {
     public function addRole(string $name): Role;
 
+    public function getRole(string $name): Role;
+
     public function deleteRole(int $id): void;
 
     public function updateRole(int $id, string $newName);

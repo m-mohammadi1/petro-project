@@ -4,8 +4,9 @@ namespace Modules\Auth\Repository\Role;
 
 use Modules\Auth\App\Models\Role;
 use Modules\Shared\Repository\memory\BaseMemoryRepository;
+use Modules\Shared\Repository\postgres\BasePostgresRepository;
 
-class RoleMemoryRepository extends BaseMemoryRepository implements RoleRepositoryInterface
+class RolePostgresRepository extends BasePostgresRepository implements RoleRepositoryInterface
 {
     protected function getModel(): string
     {
@@ -14,13 +15,11 @@ class RoleMemoryRepository extends BaseMemoryRepository implements RoleRepositor
 
     public function roleExistsWithSameName(string $name): bool
     {
-        return $this->all(['name' => $name])->count() > 0;
+        return $this->getQuery()->where('name', $name)->exists();
     }
 
     public function findByName(string $name): ?Role
     {
-        $role = $this->all(['name' => $name])->first();
-
-        return $role;
+        return $this->getQuery()->where('name', $name)->first();
     }
 }

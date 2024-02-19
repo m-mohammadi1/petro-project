@@ -2,21 +2,21 @@
 
 #### 1. setup docker environment and setup project with use of docker - DONE
 
- - php 8.1 for app
- - postgres as database
- - nginx as webserver
+ - php 8.1 for app +
+ - postgres as database +
+ - nginx as webserver +
 
 #### 2. add a module system - DONE
-- create a Modules folder
-- add composer.json and auto-discoverable service providers
-- config phpunit.xml to discover module's tests
-- add auth, truck, order module folders
+- create a Modules folder +
+- add composer.json and auto-discoverable service providers +
+- config phpunit.xml to discover module's tests +
+- add auth, truck, order module folders +
 
 #### 3. add Auth module
-- use laravel-sanctum for auth
-- register user
-- add role system
-- a command to create superuser of system
+- use laravel-sanctum for auth +
+- register user +
+- add role system +
+- a command to create superuser of system +
 - superuser can create company with an admin user
 - admin user can create multiple users with defined roles
 - each user can have access to different modules by the role

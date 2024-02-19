@@ -42,6 +42,14 @@ services:
     networks:
       - local-net
 
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "9001:8080"
+    networks:
+      - local-net
+
 volumes:
   postgres-data:
 

@@ -51,4 +51,15 @@ class RoleManagerService implements RoleManagerServiceInterface
             throw new \Exception("role cannot be deleted.");
         }
     }
+
+    public function getRole(string $name): Role
+    {
+        $role = $this->roleRepository->findByName($name);
+
+        if (!$role) {
+            throw new \Exception("role does not exists");
+        }
+
+        return $role;
+    }
 }
