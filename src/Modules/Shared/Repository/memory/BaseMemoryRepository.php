@@ -13,6 +13,11 @@ abstract class BaseMemoryRepository implements BaseRepositoryInterface
 {
     private array $storage = [];
 
+    public function __construct(array $initialValues = [])
+    {
+        $this->storage = $initialValues;
+    }
+
     protected abstract function getModel(): string;
 
     public function create(array $data): Model
@@ -98,10 +103,6 @@ abstract class BaseMemoryRepository implements BaseRepositoryInterface
     public function find(int $id): ?Model
     {
         $model = collect($this->storage)->where('id', $id)->first();
-
-        if (!$model) {
-            throw new NotFoundHttpException("model not found");
-        }
 
         return $model;
     }

@@ -14,6 +14,8 @@
 
 #### 3. add Auth module
 - use laravel-sanctum for auth
+- register user
+- add role system
 - a command to create superuser of system
 - superuser can create company with an admin user
 - admin user can create multiple users with defined roles
