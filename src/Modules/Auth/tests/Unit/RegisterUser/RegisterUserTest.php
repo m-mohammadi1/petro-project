@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\RegisterUser;
+namespace Modules\Auth\tests\Unit\RegisterUser;
 
 use Modules\Auth\Repository\User\UserMemoryRepository;
 use Modules\Auth\Services\RegisterUser\Exceptions\RegisterUserException;

@@ -1,13 +1,9 @@
 <?php
 
-namespace Tests\Unit\RoleManager;
+namespace Modules\Auth\tests\Unit\RoleManager;
 
 use Modules\Auth\Repository\Role\RoleMemoryRepository;
-use Modules\Auth\Repository\User\UserMemoryRepository;
-use Modules\Auth\Services\RegisterUser\RegisterUserService;
-use Modules\Auth\Services\RegisterUser\Types\RegisterUserData;
 use Modules\Auth\Services\RoleManager\RoleManagerService;
-use Modules\Auth\Services\UserRoleManager\UserRoleManagerService;
 use Tests\TestCase;
 
 class RoleManagerTest extends TestCase

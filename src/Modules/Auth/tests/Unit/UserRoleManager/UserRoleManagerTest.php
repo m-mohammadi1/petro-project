@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit\UserRoleManager;
+namespace Modules\Auth\tests\Unit\UserRoleManager;
 
 use Modules\Auth\Repository\Role\RoleMemoryRepository;
 use Modules\Auth\Repository\User\UserMemoryRepository;
