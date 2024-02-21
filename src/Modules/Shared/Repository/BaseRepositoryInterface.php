@@ -20,9 +20,9 @@ interface BaseRepositoryInterface
      */
     public function delete(int $id): bool;
 
-    public function all(array $conditions): Collection;
+    public function all(array $conditions = []): Collection;
 
-    public function paginate(array $conditions, int $perPage = 25): LengthAwarePaginator;
+    public function paginate(array $conditions = [], int $perPage = 25): LengthAwarePaginator;
 
     public function find(int $id): ?Model;
 

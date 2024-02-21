@@ -17,13 +17,11 @@
 - register user +
 - add role system +
 - a command to create superuser of system +
-- superuser can create company with an admin user
-- admin user can create multiple users with defined roles
-- each user can have access to different modules by the role
 - users can log in and see the dashboard page
 
-#### 4. add truck management module
-- admin can create trucks for company
+#### 4. add Company management module
+- superuser can create company with an admin user to it
+- admin user can create trucks for company
 - each truck is a combination of driver info and truck info
 
 

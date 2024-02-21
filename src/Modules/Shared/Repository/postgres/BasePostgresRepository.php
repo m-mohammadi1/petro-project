@@ -31,7 +31,7 @@ abstract class BasePostgresRepository implements BaseRepositoryInterface
             ->delete();
     }
 
-    public function all(array $conditions): Collection
+    public function all(array $conditions = []): Collection
     {
         $conds = [];
         foreach ($conditions as $field => $value) {
@@ -41,7 +41,7 @@ abstract class BasePostgresRepository implements BaseRepositoryInterface
         return $this->getQuery()->where($conds)->get();
     }
 
-    public function paginate(array $conditions, int $perPage = 25): LengthAwarePaginator
+    public function paginate(array $conditions = [], int $perPage = 25): LengthAwarePaginator
     {
         $conds = [];
         foreach ($conditions as $field => $value) {

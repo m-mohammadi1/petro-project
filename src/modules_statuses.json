@@ -2,5 +2,6 @@
     "Auth": true,
     "Truck": true,
     "Order": true,
-    "Shared": true
+    "Shared": true,
+    "Company": true
 }

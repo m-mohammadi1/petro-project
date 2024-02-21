@@ -78,7 +78,7 @@ abstract class BaseMemoryRepository implements BaseRepositoryInterface
         return true;
     }
 
-    public function all(array $conditions): Collection
+    public function all(array $conditions = []): Collection
     {
         $result = collect($this->storage);
 
@@ -89,7 +89,7 @@ abstract class BaseMemoryRepository implements BaseRepositoryInterface
         return $result;
     }
 
-    public function paginate(array $conditions, int $perPage = 25): LengthAwarePaginator
+    public function paginate(array $conditions = [], int $perPage = 25): LengthAwarePaginator
     {
         $result = collect($this->storage);
 
