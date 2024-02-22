@@ -5,7 +5,7 @@ namespace Modules\Company\App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Modules\Company\Database\factories\TruckFactory;
+use Modules\Company\Database\Factories\TruckFactory;
 
 
 /**
