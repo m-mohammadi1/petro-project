@@ -15,6 +15,7 @@ class ClientManagerService implements ClientManagerServiceInterface
         public readonly Guard                       $guard,
         public readonly ClientRepositoryInterface   $clientRepository,
         public readonly LocationRepositoryInterface $locationRepository,
+        public readonly CompanyRepositoryInterface  $companyRepository,
     )
     {
     }
@@ -22,7 +23,7 @@ class ClientManagerService implements ClientManagerServiceInterface
     public function createClient(ClientCreateData $clientData): Client
     {
         // check user
-        $company = $clientData->company;
+        $company = $this->companyRepository->findOrFail($clientData->company_id);
 
         if ($this->guard->id() !== $company->admin_id) {
             throw new \Exception("only company admin can create clients for it.");
@@ -30,7 +31,7 @@ class ClientManagerService implements ClientManagerServiceInterface
 
         $client = $this->clientRepository->create([
             "name" => $clientData->name,
-            "company_id" => $clientData->company->id,
+            "company_id" => $company->id,
         ]);
 
         // add locations for the client

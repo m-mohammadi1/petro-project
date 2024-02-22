@@ -2,17 +2,15 @@
 
 namespace Modules\Client\Services\ClientManager\Types;
 
-use Modules\Company\App\Models\Company;
-
 class ClientCreateData
 {
     /**
      * @param array<LocationData> $locations
      */
     public function __construct(
-        public readonly Company $company,
-        public readonly string     $name,
-        public readonly array   $locations,
+        public readonly int    $company_id,
+        public readonly string $name,
+        public readonly array  $locations,
     )
     {
     }

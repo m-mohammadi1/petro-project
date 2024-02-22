@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Modules\Client\App\Http\Controllers\CreateClientController;
 
 /*
     |--------------------------------------------------------------------------
@@ -15,5 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth:sanctum'])->prefix('v1')->name('api.')->group(function () {
-    Route::get('client', fn (Request $request) => $request->user())->name('client');
+
+    // a route to create the client
+    Route::post("client", CreateClientController::class)->name("client.create");
+
 });
