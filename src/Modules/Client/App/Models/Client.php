@@ -1,32 +1,32 @@
 <?php
 
-namespace Modules\Company\App\Models;
+namespace Modules\Client\App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Modules\Company\Database\Factories\CompanyFactory;
+use Modules\Client\Database\Factories\ClientFactory;
 
 
 /**
  * @property int $id
- * @property int $admin_id
+ * @property int $company_id
  * @property string $name
  * @property Carbon $updated_at
  * @property Carbon $created_at
  */
-class Company extends Model
+class Client extends Model
 {
     use HasFactory;
 
 
     protected $fillable = [
-        'admin_id',
-        'name',
+        "company_id",
+        "name",
     ];
 
-    protected static function newFactory(): CompanyFactory
+    protected static function newFactory(): ClientFactory
     {
-        return CompanyFactory::new();
+        return ClientFactory::new();
     }
 }

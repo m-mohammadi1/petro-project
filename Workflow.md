@@ -12,14 +12,14 @@
 - config phpunit.xml to discover module's tests +
 - add auth, truck, order module folders +
 
-#### 3. add Auth module
+#### 3. add Auth module - DONE
 - use laravel-sanctum for auth +
 - register user +
 - add role system +
 - a command to create superuser of system +
 - users can log in and see the dashboard page
 
-#### 4. add Company management module
+#### 4. add Company management module - DONE
 - superuser can create company with an admin user to it
 - admin user can create trucks for company
 - each truck is a combination of driver info and truck info

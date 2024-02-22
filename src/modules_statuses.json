@@ -3,5 +3,6 @@
     "Truck": true,
     "Order": true,
     "Shared": true,
-    "Company": true
+    "Company": true,
+    "Client": true
 }
