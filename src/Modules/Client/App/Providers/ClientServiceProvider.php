@@ -4,6 +4,12 @@ namespace Modules\Client\App\Providers;
 
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\Client\Repository\Client\ClientPostgresRepository;
+use Modules\Client\Repository\Client\ClientRepositoryInterface;
+use Modules\Client\Repository\Location\LocationRepositoryInterface;
+use Modules\Client\Repository\Location\LocationsPostgresRepository;
+use Modules\Client\Services\ClientManager\ClientManagerService;
+use Modules\Client\Services\ClientManager\ClientManagerServiceInterface;
 
 class ClientServiceProvider extends ServiceProvider
 {
@@ -30,6 +36,11 @@ class ClientServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->register(RouteServiceProvider::class);
+
+        $this->app->bind(ClientRepositoryInterface::class, ClientPostgresRepository::class);
+        $this->app->bind(LocationRepositoryInterface::class, LocationsPostgresRepository::class);
+
+        $this->app->bind(ClientManagerServiceInterface::class, ClientManagerService::class);
     }
 
     /**

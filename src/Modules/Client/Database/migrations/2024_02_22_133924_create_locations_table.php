@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
-            
+            $table->foreignId("client_id")->constrained("clients")->cascadeOnDelete();
+            $table->string("title");
+            $table->decimal("lat", 8, 4);
+            $table->decimal("lon", 8, 4);
             $table->timestamps();
         });
     }
