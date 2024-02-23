@@ -8,8 +8,12 @@ use Modules\Client\Repository\Client\ClientPostgresRepository;
 use Modules\Client\Repository\Client\ClientRepositoryInterface;
 use Modules\Client\Repository\Location\LocationRepositoryInterface;
 use Modules\Client\Repository\Location\LocationsPostgresRepository;
+use Modules\Client\Repository\Order\OrderPostgresRepository;
+use Modules\Client\Repository\Order\OrderRepositoryInterface;
 use Modules\Client\Services\ClientManager\ClientManagerService;
 use Modules\Client\Services\ClientManager\ClientManagerServiceInterface;
+use Modules\Client\Services\OrderManager\OrderManagerService;
+use Modules\Client\Services\OrderManager\OrderManagerServiceInterface;
 
 class ClientServiceProvider extends ServiceProvider
 {
@@ -39,8 +43,10 @@ class ClientServiceProvider extends ServiceProvider
 
         $this->app->bind(ClientRepositoryInterface::class, ClientPostgresRepository::class);
         $this->app->bind(LocationRepositoryInterface::class, LocationsPostgresRepository::class);
+        $this->app->bind(OrderRepositoryInterface::class, OrderPostgresRepository::class);
 
         $this->app->bind(ClientManagerServiceInterface::class, ClientManagerService::class);
+        $this->app->bind(OrderManagerServiceInterface::class, OrderManagerService::class);
     }
 
     /**

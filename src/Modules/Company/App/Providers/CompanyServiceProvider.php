@@ -5,10 +5,13 @@ namespace Modules\Company\App\Providers;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use Modules\Company\Repository\Company\CompanyPostgresRepository;
+use Modules\Company\Repository\Company\CompanyRepositoryInterface;
 use Modules\Company\Repository\Truck\TruckPostgresRepository;
 use Modules\Company\Repository\Truck\TruckRepositoryInterface;
 use Modules\Company\Services\CompanyManager\CompanyManagerService;
 use Modules\Company\Services\CompanyManager\CompanyManagerServiceInterface;
+use Modules\Company\Services\TruckManager\TruckManagerService;
+use Modules\Company\Services\TruckManager\TruckManagerServiceInterface;
 
 class CompanyServiceProvider extends ServiceProvider
 {
@@ -36,10 +39,11 @@ class CompanyServiceProvider extends ServiceProvider
     {
         $this->app->register(RouteServiceProvider::class);
 
-        $this->app->bind(CompanyManagerServiceInterface::class, CompanyPostgresRepository::class);
+        $this->app->bind(CompanyRepositoryInterface::class, CompanyPostgresRepository::class);
         $this->app->bind(TruckRepositoryInterface::class, TruckPostgresRepository::class);
 
         $this->app->bind(CompanyManagerServiceInterface::class, CompanyManagerService::class);
+        $this->app->bind(TruckManagerServiceInterface::class, TruckManagerService::class);
     }
 
     /**

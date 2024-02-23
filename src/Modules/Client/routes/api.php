@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Modules\Client\App\Http\Controllers\CreateClientController;
+use Modules\Client\App\Http\Controllers\CreateOrderController;
 
 /*
     |--------------------------------------------------------------------------
@@ -15,9 +16,7 @@ use Modules\Client\App\Http\Controllers\CreateClientController;
     |
 */
 
-Route::middleware(['auth:sanctum'])->prefix('v1')->name('api.')->group(function () {
-
-    // a route to create the client
+Route::middleware(['auth:sanctum'])->prefix('v1')->name('api.client.')->group(function () {
     Route::post("client", CreateClientController::class)->name("client.create");
-
+    Route::post("order", CreateOrderController::class)->name("order.create");
 });

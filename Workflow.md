@@ -25,6 +25,6 @@
 - each truck is a combination of driver info and truck info
 
 
-#### 4. add order module
+#### 4. add Client module
 - company admin can add client and locations for it
 - company users can create order for client and attach client and truck for the order
