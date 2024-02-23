@@ -31,4 +31,4 @@ use this endpoint to view the api docs
 4. [ ] write end-to-end tests for http layer
 5. [X] use form-requests and returned resources to generate api docs
 6. [ ] create a basic react app
-7. [ ] add github ci to run tests and other stuff
+7. [X] add github hook to run tests and other stuff
