@@ -9,6 +9,6 @@ app.restart:
 
 
 app.build:
-	docker-compose up --build
+	docker-compose up --build && docker-compose down
 
 .PHONY: app.run app.down app.build app.restart
